@@ -1,0 +1,10 @@
+Steven Hernandez;thumb;deborah.funk@yahoo.com;528 Atha Drive;20001;18-8729412;Male;12/04/1969;
+Danny Jones;tree;eula@yahoo.com;3597 Lee Avenue;20002;10-9473201;Male;04/02/1960;
+Lisa Gonzalez;trust;garret28@hotmail.com;4392 Dog Hill Lane;20003;11-88866146;female;10/03/1975;
+Sherri Simpson;frame;carmel72@gmail.com;3556 D Street;20004;18-8702416;Female;27/05/1991;
+Beaner;bone123;brisa.keebler60@yahoo.com;4550 Green Acres Road;20005;10-4551232;Unknown;08/06/1988;
+Amber;eula;amber@mail.com;Amber's House;20006;0108093169;Female;17/08/2000;
+Kazuha;amber;eula@mail.com;Kazuha's House;20007;1110670526;Male;27/09/1997;
+Ningguang;beidou123;ningguang@gmail.com;Somewhere above Liyue;20008;130194288;Female;06/06/1996;
+Baizhu;123321123;qiqi@gmail.com;Somewhere in Liyue;20009;108093169;Unknown;12/03/1885;
+Ben Shapiro;17283940;ben@workmail.com;Somewhere in America;20010;124650987;Male;15/01/1984;

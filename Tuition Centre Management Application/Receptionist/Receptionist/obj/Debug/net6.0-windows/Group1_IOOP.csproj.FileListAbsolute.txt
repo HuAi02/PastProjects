@@ -1,0 +1,91 @@
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.exe
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.dll.config
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.deps.json
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.runtimeconfig.json
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.pdb
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.csproj.AssemblyReference.cache
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.stdviewsub.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.stdeditpro.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.EditStudRecord.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.Login.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.PayReceipt.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.ProfileEdit.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.Properties.Resources.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.RecepHome.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.RecepProfile.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.RegStudent.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.Requests.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.stdscd.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.stdmain.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.StudRecord.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.StudRequests.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.csproj.GenerateResource.cache
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.AssemblyInfoInputs.cache
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.AssemblyInfo.cs
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.csproj.CoreCompileInputs.cache
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.csproj.CopyComplete
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\refint\Group1_IOOP.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.pdb
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.genruntimeconfig.cache
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\ref\Group1_IOOP.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.DetailsInformation.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.Home.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.NewInformation.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.UpdateInformation.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.csproj.AssemblyReference.cache
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.stdviewsub.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.DetailsInformation.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.stdeditpro.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.EditStudRecord.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.Home.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.Login.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.NewInformation.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.PayReceipt.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.ProfileEdit.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.Properties.Resources.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.RecepHome.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.RecepProfile.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.RegStudent.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.Requests.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.stdscd.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.stdmain.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.StudRecord.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.StudRequests.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.UpdateInformation.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.csproj.GenerateResource.cache
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.AssemblyInfoInputs.cache
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.AssemblyInfo.cs
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.csproj.CoreCompileInputs.cache
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\refint\Group1_IOOP.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.pdb
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.exe
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.dll.config
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.deps.json
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.runtimeconfig.json
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\Group1_IOOP.pdb
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.csproj.CopyComplete
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.genruntimeconfig.cache
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\ref\Group1_IOOP.dll
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.Administeration.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.EditProfile.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.MainMenu.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.MonthlyIncomeReport.resources
+D:\OneDrive - Asia Pacific University\Documents\Class\Sem2\IOOP\Assignment\Compile\Compile (Design Edited)\Compile\Receptionist\Receptionist\obj\Debug\net6.0-windows\Group1_IOOP.TutorEditProfile.resources

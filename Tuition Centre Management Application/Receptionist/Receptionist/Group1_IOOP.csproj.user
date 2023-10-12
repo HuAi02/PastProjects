@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Administration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ChgSub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DetailsInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="editprof.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MonthlyIncomeReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TutorEditProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditStudRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="NewInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="RecepHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PayReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ProfileEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="RecepProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="RegStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Requests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Schedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="stdmain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StudRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StudRequests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UpdateInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

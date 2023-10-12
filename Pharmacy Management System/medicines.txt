@@ -1,0 +1,7 @@
+Alkepirin;Unknown;23/04/2025;100ml;50.00;91;10001;liquids;
+Addemane;No;12/11/2025;150ml;75.00;100;10002;liquids;
+Fragpen;No;30/08/2027;120ml;40.00;120;10003;liquids;
+Vitratrace;Yes;20/09/2027;270g;60;10;10004;tablets;
+Vitamin C;No;12/04/2028;50;25;12;10005;capsules;
+Benzene;No;23/02/2030;100ml;129;88;10006;Liquids;
+DigestZen;No;30/07/2025;50 capsules;60;13;10007;Capsules;
