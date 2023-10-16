@@ -1,4 +1,4 @@
-# Source code for past assignments
+# Source code for past projects
 ## Pharmacy Management System
 Programmed in Python, a text file-based database was utilized to allow the listing and purchasing of pharmaceutical products by pharmacist and customer respectively.
 ## Tuition Centre Management Application
