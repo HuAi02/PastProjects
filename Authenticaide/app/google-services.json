@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "216473924130",
+    "project_id": "authenticaide",
+    "storage_bucket": "authenticaide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216473924130:android:aab0450988b6da444c107b",
+        "android_client_info": {
+          "package_name": "com.example.authenticaide"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUS_ljd8N-fTGEuRkOx99-dbfzc2RYEEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

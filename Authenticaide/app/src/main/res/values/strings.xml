@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Authenticaide</string>
+    <string name="hello">Hey there, </string>
+    <string name="create_account">Create an Account</string>
+    <string name="welcome">Welcome Back</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="hide_password">Hide password</string>
+    <string name="show_password">Show password</string>
+    <string name="terms_and_conditions">By continuing you accept our Privacy Policy and Terms of Use</string>
+    <string name="terms_and_conditions_header">Terms of Use</string>
+    <string name="termsOfUse">Authenticaide: Terms of Use\nThese Terms of Use (\"Terms\") apply to your access to and use of the Authenticaide mobile application (\"App\") provided by Authenticaide. By accessing or using the App, you agree to comply with these Terms.\n\nPurpose of the App: Authenticaide is designed to combat online counterfeit by providing users with tools and information to identify and report counterfeit products.\n\nUser Conduct:\n\nYou agree to use the App for lawful purposes and in a manner consistent with these Terms and all applicable laws and regulations.\nYou will not use the App in any way that could impair, damage, disable, or compromise the functionality or security of the App or its users.\nIntellectual Property:\n\nThe App and its content (including but not limited to text, graphics, logos, images, and software) are the intellectual property of Authenticaide and are protected by copyright and other laws.\nYou may not copy, modify, distribute, or reproduce any part of the App or its content without prior written permission.\nDisclaimer of Warranties:\n\nThe App is provided \"as is\" without warranties of any kind, whether express or implied. Authenticaide does not guarantee the accuracy, completeness, or reliability of the App\'s content.\nLimitation of Liability:\n\nAuthenticaide shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or in connection with the use of the App.\nTermination:\n\nAuthenticaide reserves the right to terminate or suspend your access to the App at any time without notice, for any reason.\nUpdates to Terms:\n\nThese Terms may be updated from time to time. It is your responsibility to review the Terms periodically for changes.\nGoverning Law:\n\nThese Terms shall be governed by and construed in accordance with the laws of Malaysia.\nBy using the App, you acknowledge that you have read, understood, and agreed to these Terms. If you do not agree with any part of these Terms, please refrain from using the App.\n\nIf you have any questions or concerns regarding these Terms, please contact us at kekmh2002@gmail.com\n\nLast updated: 10/10/2023</string>
+    <string name="register">Register</string>
+    <string name="go_to_login">Already have an account? Login</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="login">Login</string>
+</resources>
