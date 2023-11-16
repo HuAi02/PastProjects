@@ -1,17 +1,21 @@
 package com.example.authenticaide.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,6 +31,7 @@ import com.example.authenticaide.components.NormalTextComponent
 import com.example.authenticaide.components.PasswordTextField
 import com.example.authenticaide.components.UnderLinedTextComponent
 import com.example.authenticaide.viewmodel.LoginViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun LoginScreen(navController: NavController){
@@ -35,21 +40,20 @@ fun LoginScreen(navController: NavController){
     val email by rememberSaveable { viewModel.email }
     val password by rememberSaveable { viewModel.password }
 
-    // Function to handle login button click
-//    val onLoginClicked: () -> Unit = {
-//        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    // Authentication successful, navigate to the next screen
-//                    navController.navigate("HomeScreen")
-//                } else {
-//                    // Authentication failed, show error message or handle accordingly
-//                    // For example:
-//                    // Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//    }
-    val onLoginClicked: () -> Unit = {navController.navigate("HomeScreen")}
+//     Function to handle login button click
+    val onLoginClicked: () -> Unit = {
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Authentication successful, navigate to the next screen
+                    navController.navigate("HomeScreen")
+                } else {
+                    // Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
+                    navController.navigate("LoginScreen")
+                }
+            }
+    }
+
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -59,14 +63,23 @@ fun LoginScreen(navController: NavController){
         Column() {
             NormalTextComponent(value = stringResource(id = R.string.hello))
             HeadingTextComponent(value = stringResource(id = R.string.welcome))
-            Spacer(modifier = Modifier.height(80.dp))
+            Spacer(modifier = Modifier.height(40.dp))
+            Image(
+                painter = painterResource(id = R.drawable.ic_launcher), // Replace with your launcher icon resource ID
+                contentDescription = "App Launcher Icon",
+                modifier = Modifier
+                    .size(100.dp)
+                    .align(Alignment.CenterHorizontally)
+            )
             MyTextFieldComponent(labelValue = stringResource(id = R.string.email), value = email) { newValue ->
                 viewModel.email.value = newValue
             }
-            PasswordTextField(labelValue = stringResource(id = R.string.password))
+            PasswordTextField(labelValue = stringResource(id = R.string.password)) { newPassword ->
+                viewModel.password.value = newPassword
+            }
             Spacer(modifier = Modifier.height(20.dp))
             UnderLinedTextComponent(value = stringResource(id = R.string.forgot_password))
-            Spacer(modifier = Modifier.height(80.dp))
+            Spacer(modifier = Modifier.height(165.dp))
             ButtonComponent(value = stringResource(id = R.string.login)) {
                 onLoginClicked.invoke()
             }
@@ -78,7 +91,6 @@ fun LoginScreen(navController: NavController){
                     navController.navigate("SignUpScreen")
                 }
             }
-
         }
     }
 }

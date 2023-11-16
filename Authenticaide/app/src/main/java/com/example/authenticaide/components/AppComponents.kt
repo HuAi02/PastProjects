@@ -17,8 +17,8 @@ import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.PersonPin
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
@@ -29,6 +29,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -68,6 +69,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.authenticaide.R
+import com.example.authenticaide.ui.theme.colorBlack
 import com.example.authenticaide.ui.theme.colorPrimary
 import com.example.authenticaide.ui.theme.colorPrimaryLight
 import com.example.authenticaide.ui.theme.colorSecondary
@@ -118,7 +120,7 @@ fun MyTextFieldComponent(labelValue: String, value: String, onValueChange: (Stri
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = colorPrimary,
             focusedLabelColor = colorPrimary,
-            cursorColor = colorPrimary,
+            cursorColor = colorBlack,
         ),
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
         singleLine = true,
@@ -136,12 +138,11 @@ fun MyTextFieldComponent(labelValue: String, value: String, onValueChange: (Stri
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordTextField(labelValue:String){
+fun PasswordTextField(labelValue:String, onPasswordChange: (String) -> Unit){
     val localFocusManager = LocalFocusManager.current
     val password = remember {
         mutableStateOf("")
     }
-
     var passwordVisible by remember { mutableStateOf(false) }
 
     OutlinedTextField(
@@ -152,7 +153,7 @@ fun PasswordTextField(labelValue:String){
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = colorPrimary,
             focusedLabelColor = colorPrimary,
-            cursorColor = colorPrimary,
+            cursorColor = colorBlack,
         ),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
         singleLine = true,
@@ -163,6 +164,7 @@ fun PasswordTextField(labelValue:String){
         value = password.value,
         onValueChange = {
             password.value = it
+            onPasswordChange(it)
         },
 //        leadingIcon = {
 //            androidx.compose.material3.Icon(painter = painterResource(id = R.drawable.profile), contentDescription = "")
@@ -321,16 +323,13 @@ fun UnderLinedTextComponent(value: String){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RedditLikeUI() {
+fun RedditLikeUI(navController: NavHostController) {
     val scrollState = rememberLazyListState()
     val threadList = List(20) { index ->
         "Thread ${index + 1}" to "Content for thread ${index + 1}"
     }
 
     Scaffold(
-        topBar = {
-            CenterAlignedTopAppBarExample("Authenticaide")
-        },
         content = { padding ->
             LazyColumn(
                 state = scrollState,
@@ -343,21 +342,18 @@ fun RedditLikeUI() {
                     ThreadItem(heading, content)
                 }
             }
-        },
-        bottomBar = {
-            NavigationBar(navController = rememberNavController())
         }
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CenterAlignedTopAppBarExample(value: String) {
+fun CenterAlignedTopAppBar(value: String, navController: NavHostController) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = colorSecondary,
+            containerColor = colorPrimaryLight,
             titleContentColor = colorWhite,
         ),
         title = {
@@ -369,7 +365,7 @@ fun CenterAlignedTopAppBarExample(value: String) {
             ) {
                 IconButton(onClick = { /* do something */ }) {
                     Icon(
-                        imageVector = Icons.Filled.ArrowBack,
+                        imageVector = Icons.Filled.Edit,
                         contentDescription = "Localized description",
                         tint = Color.White
                     )
@@ -384,10 +380,12 @@ fun CenterAlignedTopAppBarExample(value: String) {
                     modifier = Modifier.weight(1f)
                 )
 
-                IconButton(onClick = { /* do something */ }) {
+                IconButton(onClick = {
+                    navController.navigate("ProfileScreen")
+                }) {
                     Icon(
-                        imageVector = Icons.Filled.Menu,
-                        contentDescription = "Localized description",
+                        imageVector = Icons.Filled.PersonPin,
+                        contentDescription = "My Profile",
                         tint = Color.White
                     )
                 }
@@ -400,8 +398,13 @@ fun CenterAlignedTopAppBarExample(value: String) {
 
 @Composable
 fun NavigationBar(navController: NavHostController){
+    val navBarItemColors = NavigationBarItemDefaults.colors(
+        indicatorColor = colorWhite
+    )
     androidx.compose.material3.NavigationBar(
-        modifier = Modifier.height(56.dp)
+        modifier = Modifier.height(56.dp),
+        containerColor = colorPrimaryLight,
+        contentColor = colorWhite,
     ) {
         val backStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = backStackEntry?.destination?.route
@@ -410,6 +413,7 @@ fun NavigationBar(navController: NavHostController){
 
             NavigationBarItem(
                 selected = currentRoute == navItem.route,
+                colors = navBarItemColors,
                 onClick = {
                     navController.navigate(navItem.route) {
                         popUpTo(navController.graph.findStartDestination().id) {
@@ -423,17 +427,11 @@ fun NavigationBar(navController: NavHostController){
                 icon = {
                     Icon(
                         imageVector = navItem.image,
-                        contentDescription = navItem.title
+                        contentDescription = navItem.title,
+                        tint = if (currentRoute == navItem.route) colorBlack else colorWhite
                     )
                 },
                 label = null
-//                {
-//                    Text(
-//                        text = navItem.title,
-//                        maxLines = 1, // Limit the text to a single line
-//                        overflow = TextOverflow.Ellipsis // Display ellipsis for overflowing text
-//                    )
-//                },
             )
         }
     }

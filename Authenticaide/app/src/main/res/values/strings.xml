@@ -15,4 +15,7 @@
     <string name="go_to_login">Already have an account? Login</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="login">Login</string>
+    <string name="profile">Profile</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
 </resources>

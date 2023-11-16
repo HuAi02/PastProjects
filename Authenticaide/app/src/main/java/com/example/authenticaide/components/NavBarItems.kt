@@ -12,27 +12,27 @@ object NavBarItems {
         BarItem(
             title = "Home",
             image = Icons.Filled.Home,
-            route = "home"
+            route = "HomeScreen"
         ),
         BarItem(
             title = "Search",
             image = Icons.Filled.Search,
-            route = "search"
+            route = "SearchScreen"
         ),
         BarItem(
             title = "Compose",
             image = Icons.Filled.Add,
-            route = "compose"
+            route = "ComposeScreen"
         ),
         BarItem(
             title = "Notification",
             image = Icons.Filled.Notifications,
-            route = "notification"
+            route = "NotificationScreen"
         ),
         BarItem(
             title = "Message",
             image = Icons.Filled.Email,
-            route = "message"
+            route = "MessageScreen"
         )
     )
 }
