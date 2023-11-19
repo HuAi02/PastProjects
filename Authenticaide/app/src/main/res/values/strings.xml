@@ -18,4 +18,9 @@
     <string name="profile">Profile</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
+    <string name="title">Title</string>
+    <string name="product_name">Product (optional)</string>
+    <string name="product_variation">Variant (optional)</string>
+    <string name="product_link">Link (optional)</string>
+    <string name="content">Description</string>
 </resources>

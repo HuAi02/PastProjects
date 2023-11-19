@@ -1,26 +1,23 @@
-
-
 package com.example.authenticaide
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavHostController
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.authenticaide.components.CenterAlignedTopAppBar
 import com.example.authenticaide.components.NavigationBar
-import com.example.authenticaide.navigation.ProvideBackPressedDispatcherOwner
 import com.example.authenticaide.screens.ComposeScreen
 import com.example.authenticaide.screens.EditProfileScreen
 import com.example.authenticaide.screens.HomeScreen
@@ -28,99 +25,86 @@ import com.example.authenticaide.screens.LoginScreen
 import com.example.authenticaide.screens.MessageScreen
 import com.example.authenticaide.screens.NotificationScreen
 import com.example.authenticaide.screens.ProfileScreen
-import com.example.authenticaide.screens.SearchScreen
 import com.example.authenticaide.screens.SignUpScreen
 import com.example.authenticaide.screens.TermsAndConditionsScreen
+import com.example.authenticaide.screens.ThreadScreen
+import com.example.authenticaide.viewmodel.NavigationViewModel
+import com.example.authenticaide.viewmodel.ThreadsViewModel
 import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : ComponentActivity() {
+    private lateinit var auth: FirebaseAuth
+    private lateinit var navigationViewModel: NavigationViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         FirebaseApp.initializeApp(this)
+        auth = FirebaseAuth.getInstance()
+        navigationViewModel = ViewModelProvider(this)[NavigationViewModel::class.java]
+
+
         setContent {
-            ProvideNavHost {
-                MainScreen()
-            }
+            ProvideNavHost(navigationViewModel = navigationViewModel)
+        }
+        auth.addAuthStateListener { firebaseAuth ->
+            val user = firebaseAuth.currentUser
+            navigationViewModel.updateLoggedInState(user != null)
         }
     }
 }
 
 @Composable
-fun ProvideNavHost(content: @Composable () -> Unit) {
+fun ProvideNavHost(navigationViewModel: NavigationViewModel) {
     val navController = rememberNavController()
-    LocalOnBackPressedDispatcherOwner.current?.let {
-        ProvideBackPressedDispatcherOwner(it) {
-        Authenticaide(navController)
-    }
-    }
-}
-
-@Composable
-fun Authenticaide(navController: NavHostController) {
-    NavHost(
-        navController = navController,
-        startDestination = "LoginScreen"
-    ) {
-        composable("SignUpScreen") {
-            SignUpScreen(navController)
-        }
-        composable("TermsAndConditionsScreen") {
-            TermsAndConditionsScreen(navController)
-        }
-        composable("LoginScreen") {
-            LoginScreen(navController)
-        }
-        composable("HomeScreen") {
-            // Passing the primary NavController to the HomeScreen
-            MainScreen()
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MainScreen() {
-    val navController = rememberNavController()
+    val loggedInState by navigationViewModel.loggedInState.observeAsState(initial = false)
+    val destination = if (loggedInState) navigationViewModel.getDestinationRoute("HomeScreen") else navigationViewModel.getDestinationRoute("LoginScreen")
+    val threadsViewModel: ThreadsViewModel = viewModel()
 
     Scaffold(
-        topBar = { CenterAlignedTopAppBar(value = "Authenticaide", navController = navController) },
         content = { padding ->
-            Column (
+            Surface(
                 modifier = Modifier
                     .padding(padding)
                     .fillMaxSize()
-            ){
-                NavHost(navController = navController, startDestination = "HomeScreen") {
-                    composable("HomeScreen") {
-                        HomeScreen(navController)
-                    }
-                    composable("SearchScreen") {
-                        SearchScreen(navController)
-                    }
-                    composable("ComposeScreen") {
-                        ComposeScreen(navController)
-                    }
-                    composable("NotificationScreen") {
-                        NotificationScreen(navController)
-                    }
-                    composable("MessageScreen") {
-                        MessageScreen(navController)
-                    }
-                    composable("ProfileScreen") {
-                        ProfileScreen(navController)
-                    }
-                    composable("EditProfileScreen") {
-                        EditProfileScreen(navController)
+            ) {
+                NavHost(navController = navController, startDestination = destination ?: "LoginScreen") {
+                    navigationViewModel.navigationRoutes.forEach { (routeKey, _) ->
+                        composable(routeKey) {
+                            when (routeKey) {
+                                "SignUpScreen" -> SignUpScreen(navController)
+                                "LoginScreen" -> LoginScreen(navController)
+                                "TermsAndConditionsScreen" -> TermsAndConditionsScreen(navController)
+                                "HomeScreen" -> HomeScreen(navController, threadsViewModel)
+                                "ComposeScreen" -> ComposeScreen(navController)
+                                "NotificationScreen" -> NotificationScreen(navController)
+                                "MessageScreen" -> MessageScreen(navController)
+                                "ProfileScreen" -> ProfileScreen(navController)
+                                "EditProfileScreen" -> EditProfileScreen(navController)
+                                else -> {
+                                    LoginScreen(navController)
+                                }
+                            }
+                        }
+                        composable("ThreadsScreen/{threadId}") { backStackEntry ->
+                            val threadId = backStackEntry.arguments?.getString("threadId") ?: ""
+
+                            // Pass the fetched thread and replies to ThreadsScreen composable
+                            ThreadScreen(navController = navController, threadId = threadId)
+                        }
                     }
                 }
             }
         },
         bottomBar = {
-            NavigationBar(navController = navController)
+            if (loggedInState) {
+                NavigationBar(navController = navController)
+            }
         }
     )
 }
+
 
 @Preview(showBackground = true)
 @Composable

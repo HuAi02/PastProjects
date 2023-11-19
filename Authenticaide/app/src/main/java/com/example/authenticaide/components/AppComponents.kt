@@ -1,53 +1,71 @@
 package com.example.authenticaide.components
 
-import android.util.Log
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.PersonPin
+import androidx.compose.material.icons.filled.Person2
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -63,17 +81,25 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import coil.compose.AsyncImage
+import coil.compose.rememberAsyncImagePainter
 import com.example.authenticaide.R
+import com.example.authenticaide.models.RepliesModel
+import com.example.authenticaide.models.ThreadsModel
 import com.example.authenticaide.ui.theme.colorBlack
 import com.example.authenticaide.ui.theme.colorPrimary
 import com.example.authenticaide.ui.theme.colorPrimaryLight
 import com.example.authenticaide.ui.theme.colorSecondary
+import com.example.authenticaide.ui.theme.colorSecondaryLight
 import com.example.authenticaide.ui.theme.colorWhite
+import com.example.authenticaide.viewmodel.ThreadsViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun NormalTextComponent(value:String){
@@ -89,6 +115,23 @@ fun NormalTextComponent(value:String){
         )
     , color = colorResource(id = R.color.colorBlack),
         textAlign = TextAlign.Center
+    )
+}
+
+@Composable
+fun ProfileTextComponent(value:String){
+    Text(
+        text = value,
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 40.dp),
+        style = TextStyle(
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Normal,
+            fontStyle = FontStyle.Normal
+        )
+        , color = colorResource(id = R.color.colorBlack),
+        textAlign = TextAlign.Left
     )
 }
 
@@ -117,10 +160,10 @@ fun MyTextFieldComponent(labelValue: String, value: String, onValueChange: (Stri
             .fillMaxWidth()
             .background(colorWhite),
         label = { Text(text = labelValue) },
-        colors = TextFieldDefaults.outlinedTextFieldColors(
+        colors = OutlinedTextFieldDefaults.colors(
+            cursorColor = colorBlack,
             focusedBorderColor = colorPrimary,
             focusedLabelColor = colorPrimary,
-            cursorColor = colorBlack,
         ),
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
         singleLine = true,
@@ -150,10 +193,10 @@ fun PasswordTextField(labelValue:String, onPasswordChange: (String) -> Unit){
             .fillMaxWidth()
             .background(colorWhite),
         label = {Text(text = labelValue)},
-        colors = TextFieldDefaults.outlinedTextFieldColors(
+        colors = OutlinedTextFieldDefaults.colors(
+            cursorColor = colorBlack,
             focusedBorderColor = colorPrimary,
             focusedLabelColor = colorPrimary,
-            cursorColor = colorBlack,
         ),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
         singleLine = true,
@@ -190,14 +233,18 @@ fun PasswordTextField(labelValue:String, onPasswordChange: (String) -> Unit){
 }
 
 @Composable
-fun CheckboxComponent(value: String, isChecked: Boolean, onCheckedChange: (Boolean) -> Unit, navController: NavController) {
+fun CheckboxComponent(
+    isChecked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+    navController: NavController
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(56.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        val checkedState = remember {
+        remember {
             mutableStateOf(false)
         }
         Checkbox(
@@ -206,19 +253,16 @@ fun CheckboxComponent(value: String, isChecked: Boolean, onCheckedChange: (Boole
                 onCheckedChange(newCheckedState)
             }
         )
-        ClickableTextComponent(
-            isChecked = isChecked,
-            onTextSelected = {
-                if (it == "Terms of Use" || it == "Privacy Policy") {
-                    navController.navigate("TermsAndConditionsScreen")
-                }
+        ClickableTextComponent {
+            if (it == "Terms of Use" || it == "Privacy Policy") {
+                navController.navigate("TermsAndConditionsScreen")
             }
-        )
+        }
     }
 }
 
 @Composable
-fun ClickableTextComponent(isChecked: Boolean, onTextSelected: (String) -> Unit) {
+fun ClickableTextComponent(onTextSelected: (String) -> Unit) {
     val part1 = "By continuing you accept our "
     val privacyPolicy = "Privacy Policy"
     val part2 = " and "
@@ -283,7 +327,7 @@ fun ClickableLoginComponent(tryingToLogin: Boolean = true, onTextSelected: (Stri
         }
     }
 
-    val navController = rememberNavController()
+    rememberNavController()
 
     ClickableText(modifier = Modifier
         .fillMaxWidth()
@@ -305,6 +349,48 @@ fun ClickableLoginComponent(tryingToLogin: Boolean = true, onTextSelected: (Stri
 }
 
 @Composable
+fun ClickableProductLink(
+    productLink: String,
+    modifier: Modifier = Modifier,
+    onProductLinkSelected: (String) -> Unit // Callback to handle the product link selection
+) {
+    val context = LocalContext.current
+
+    // Create the annotated string
+    val annotatedString = remember {
+        buildAnnotatedString {
+            val part1 = "Product Link: "
+            withStyle(SpanStyle(color = colorPrimaryLight)) {
+                // Push annotation for the product link
+                pushStringAnnotation(tag = "ProductLink", annotation = productLink)
+                append(part1)
+                append(productLink)
+            }
+        }
+    }
+
+    // Show the annotated string using ClickableText
+    ClickableText(
+        modifier = modifier.fillMaxWidth(),
+        text = annotatedString,
+        onClick = { offset ->
+            // Get the clicked annotation and handle product link selection
+            annotatedString.getStringAnnotations(start = offset, end = offset)
+                .firstOrNull()?.let { annotation ->
+                    if (annotation.tag == "ProductLink") {
+                        onProductLinkSelected(annotation.item)
+                    }
+                }
+        }
+    )
+}
+
+fun openLinkInBrowser(context: Context, url: String) {
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+    context.startActivity(Intent.createChooser(intent, "Browse with"));
+}
+
+@Composable
 fun UnderLinedTextComponent(value: String){
     Text(
         text = value,
@@ -323,37 +409,74 @@ fun UnderLinedTextComponent(value: String){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RedditLikeUI(navController: NavHostController) {
-    val scrollState = rememberLazyListState()
-    val threadList = List(20) { index ->
-        "Thread ${index + 1}" to "Content for thread ${index + 1}"
-    }
+fun SearchBar(onSearch: (String) -> Unit) {
+    // Create a state for the search keyword
+    val keyword = remember { mutableStateOf("") }
 
-    Scaffold(
-        content = { padding ->
-            LazyColumn(
-                state = scrollState,
+    // Create a surface with outline for the search bar
+    Surface(
+        shape = RoundedCornerShape(8.dp), // Rounded corners for the entire search bar
+        shadowElevation = 4.dp, // Elevation for shadow effect
+        border = BorderStroke(1.dp, colorSecondaryLight), // Outline color and width
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(80.dp)
+            .padding(horizontal = 18.dp, vertical = 8.dp) // Adjust vertical padding
+    ) {
+        // Row to display the search bar content
+        Row(
+            modifier = Modifier.fillMaxSize(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Display the text field on the left
+            TextField(
+                value = keyword.value,
+                onValueChange = {
+                    keyword.value = it
+                    onSearch(it)
+                },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Search),
                 modifier = Modifier
-                    .padding(padding)
-                    .fillMaxSize()
-            ){
-                items(threadList.size) { index ->
-                    val (heading, content) = threadList[index]
-                    ThreadItem(heading, content)
-                }
-            }
+                    .weight(1f)
+                    .fillMaxHeight(),
+                singleLine = true,
+                placeholder = {
+                    Text(
+                        text = "Search keyword",
+                        color = Color.Gray,
+                    )
+                },
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = colorWhite,
+                    unfocusedContainerColor = colorWhite,
+                    disabledContainerColor = Color.Gray,
+                    cursorColor = colorBlack,
+                )
+            )
+            // Display the magnifying glass icon on the right
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = "Search icon",
+                modifier = Modifier
+                    .size(28.dp),
+                tint = colorSecondaryLight
+            )
+            Spacer(modifier = Modifier.width(8.dp))
         }
-    )
+    }
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CenterAlignedTopAppBar(value: String, navController: NavHostController) {
+fun ProfileTopBar(value: String, navController: NavHostController) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+
 
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = colorPrimaryLight,
+            containerColor = colorSecondary,
             titleContentColor = colorWhite,
         ),
         title = {
@@ -363,12 +486,9 @@ fun CenterAlignedTopAppBar(value: String, navController: NavHostController) {
                     .fillMaxWidth()
                     .height(56.dp)
             ) {
-                IconButton(onClick = { /* do something */ }) {
-                    Icon(
-                        imageVector = Icons.Filled.Edit,
-                        contentDescription = "Localized description",
-                        tint = Color.White
-                    )
+                IconButton(onClick = {
+                }) {
+
                 }
 
                 Text(
@@ -384,10 +504,156 @@ fun CenterAlignedTopAppBar(value: String, navController: NavHostController) {
                     navController.navigate("ProfileScreen")
                 }) {
                     Icon(
-                        imageVector = Icons.Filled.PersonPin,
+                        imageVector = Icons.Filled.Person2,
                         contentDescription = "My Profile",
                         tint = Color.White
                     )
+                }
+            }
+
+        },
+        scrollBehavior = scrollBehavior,
+        modifier = Modifier.height(56.dp)
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BackTopBar(value: String, navController: NavHostController) {
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+
+
+    CenterAlignedTopAppBar(
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+            containerColor = colorSecondary,
+            titleContentColor = colorWhite,
+        ),
+        title = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+            ) {
+                IconButton(onClick = {
+                    navController.popBackStack()
+                }) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = "Back",
+                        tint = Color.White
+                    )
+                }
+
+                Text(
+                    text = value,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.Center,
+                    color = colorWhite,
+                    modifier = Modifier.weight(1f)
+                )
+
+                IconButton(onClick = {}) {}
+            }
+
+        },
+        scrollBehavior = scrollBehavior,
+        modifier = Modifier.height(56.dp)
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BackAndEditTopBar(value: String, navController: NavHostController) {
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+
+    CenterAlignedTopAppBar(
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+            containerColor = colorSecondary,
+            titleContentColor = colorWhite,
+        ),
+        title = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+            ) {
+                IconButton(onClick = {
+                    navController.popBackStack()
+                }) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = "Back",
+                        tint = Color.White
+                    )
+                }
+
+                Text(
+                    text = value,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.Center,
+                    color = colorWhite,
+                    modifier = Modifier.weight(1f)
+                )
+
+                IconButton(onClick = {
+                    navController.navigate("EditProfileScreen")
+                }) {
+                    Icon(
+                        imageVector = Icons.Filled.Edit,
+                        contentDescription = "Edit Profile",
+                        tint = Color.White
+                    )
+                }
+            }
+        },
+        scrollBehavior = scrollBehavior,
+        modifier = Modifier.height(56.dp)
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BackAndConfirmTopBar(value: String, navController: NavHostController) {
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+
+    CenterAlignedTopAppBar(
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+            containerColor = colorSecondary,
+            titleContentColor = colorWhite,
+        ),
+        title = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+            ) {
+                IconButton(onClick = {
+                    navController.popBackStack()
+                }) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = "Back",
+                        tint = Color.White
+                    )
+                }
+
+                Text(
+                    text = value,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.Center,
+                    color = colorWhite,
+                    modifier = Modifier.weight(1f)
+                )
+
+                IconButton(onClick = {
+                }) {
+
                 }
             }
         },
@@ -399,12 +665,12 @@ fun CenterAlignedTopAppBar(value: String, navController: NavHostController) {
 @Composable
 fun NavigationBar(navController: NavHostController){
     val navBarItemColors = NavigationBarItemDefaults.colors(
-        indicatorColor = colorWhite
+        indicatorColor = colorSecondary
     )
     androidx.compose.material3.NavigationBar(
-        modifier = Modifier.height(56.dp),
-        containerColor = colorPrimaryLight,
-        contentColor = colorWhite,
+        modifier = Modifier.height(80.dp),
+        containerColor = colorWhite,
+        contentColor = colorSecondary,
     ) {
         val backStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = backStackEntry?.destination?.route
@@ -428,29 +694,126 @@ fun NavigationBar(navController: NavHostController){
                     Icon(
                         imageVector = navItem.image,
                         contentDescription = navItem.title,
-                        tint = if (currentRoute == navItem.route) colorBlack else colorWhite
+                        tint = if (currentRoute == navItem.route) colorWhite else colorSecondary
                     )
                 },
-                label = null
+                label = {
+                    Text(
+                        text = navItem.title,
+                        color = colorSecondary
+                    )
+                }
             )
         }
     }
 }
 
 @Composable
-fun ThreadItem(heading: String, content: String) {
-    ClickableText(
-        text = AnnotatedString(heading),
-        onClick = { offset ->
-            // Handle click on thread heading
-            // For simplicity, this just logs the clicked thread's heading
-            Log.d("ThreadClicked", "Thread heading: $heading")
-        },
-        modifier = Modifier.padding(8.dp)
+fun ThreadItem(
+    thread: ThreadsModel,
+    threadsViewModel: ThreadsViewModel,
+    navController: NavHostController
+) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+
+    // Click listener to navigate to ThreadsScreen
+    val onClick = {
+        scope.launch {
+            val threadId = threadsViewModel.getThreadIdByAttributes(thread)
+            threadId?.let {
+                navController.navigate("ThreadsScreen/$it")
+            }
+        }
+    }
+
+
+    // Composable to display each thread item
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+            .clickable { onClick.invoke() }
+    ) {
+        // Display image on the left side
+        Image(
+            painter = rememberAsyncImagePainter(model = thread.photo),
+            contentDescription = "Thread photo",
+            modifier = Modifier
+                .size(150.dp)
+                .clip(shape = RoundedCornerShape(8.dp))
+        )
+        Column(
+            modifier = Modifier
+                .padding(start = 16.dp)
+                .align(Alignment.Top)
+                .fillMaxHeight()
+        ) {
+            Text(text = thread.username)
+            Text(text = "Title: ${thread.title}")
+            Text(text = "Content: ${thread.content}")
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(text = "Likes: ${thread.likeCounts}")
+        }
+    }
+    Divider(
+        color = colorSecondary,
+        thickness = 1.dp,
+        modifier = Modifier
+            .fillMaxWidth()
     )
-    Text(
-        text = content,
-        modifier = Modifier.padding(horizontal = 8.dp),
-        color = Color.Gray
-    )
+}
+
+@Composable
+fun ReplyItem(
+    threadsViewModel: ThreadsViewModel = viewModel(),
+    threadId: String
+) {
+    // Fetch related reply IDs from Firestore using threadId
+    val relatedRepliesIds = remember { mutableStateListOf<String>() }
+    LaunchedEffect(threadId) {
+
+        threadsViewModel.getThreadById(threadId)
+            ?.let { relatedRepliesIds.addAll(it.relatedRepliesIds) }
+    }
+
+    // Fetch replies based on related reply IDs
+    val replies = remember { mutableStateListOf<RepliesModel>() }
+    LaunchedEffect(relatedRepliesIds) {
+        val fetchedReplies = threadsViewModel.getRepliesForThread(relatedRepliesIds)
+        replies.addAll(fetchedReplies)
+    }
+
+    // Display each reply's username and content
+    Column {
+        for (reply in replies) {
+            Text(text = "Username: ${reply.username}")
+            Text(text = "Content: ${reply.content}")
+            Divider(
+                color = colorSecondary,
+                thickness = 1.dp,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+    }
+}
+
+@Composable
+fun NotificationItem(thread: ThreadsModel) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        // Display thread picture if available
+        thread.photo.let { photoUrl ->
+            AsyncImage(
+                model = photoUrl,
+                contentDescription = null,
+                modifier = Modifier.size(48.dp).clip(shape = RoundedCornerShape(4.dp)),
+            )
+        }
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+            text = "${thread.username} just replied to your thread '${thread.title}'"
+        )
+    }
 }
